@@ -91,28 +91,35 @@ class CommunicationThread(
 //                    val content = JSONObject(httpResponse)
 
                     // DE SCHIMBAT
-                    val informationArray = content.getJSONArray(1)
-                    val condition = StringBuilder()
-                    for (i in 0 until informationArray.length()) {
-                        // DE SCHIMBAT
-                        val informationObj = informationArray.getString(i)
-                        condition.append(informationObj)
+                    val myDataObject = content.getJSONObject("Data")
+                    val BTC = myDataObject.getJSONObject("BTC-$currency")
 
-                        if (i < informationArray.length() - 1) condition.append(",")
-                    }
+                    Log.i(Constants.TAG, BTC.toString())
+
+                    val condition = StringBuilder()
+//                    for (i in 0 until informationArray.length()) {
+//                        // DE SCHIMBAT
+//                        val informationObj = informationArray.getString(i)
+//                        condition.append(informationObj)
+//
+//                        if (i < informationArray.length() - 1) condition.append(",")
+//                    }
+
+                    condition.append(BTC.getString("VALUE"))
 
                     val info = Information(
-                        words = condition.toString()
+                        value = condition.toString(),
+                        time = "0"
                     )
 
                     // DE SCHIMBAT
-                    serverThread.setData(prefix, info)
+                    serverThread.setData(currency, info)
                     // returning
                     info
                 }
 
                 // DE SCHIMBAT
-                val result = information.words
+                val result = information.value
 
                 printWriter.println(result)
                 printWriter.flush()

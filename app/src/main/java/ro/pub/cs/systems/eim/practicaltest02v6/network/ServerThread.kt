@@ -27,9 +27,9 @@ class ServerThread(port: Int) : Thread() {
     }
 
     @Synchronized
-    fun setData(prefix: String, information: Information?) {
+    fun setData(currency: String, information: Information?) {
         // DE SCHIMBAT
-        data[prefix] = information
+        data[currency] = information
     }
 
     override fun run() {
