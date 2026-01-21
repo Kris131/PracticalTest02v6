@@ -12,6 +12,7 @@ import ro.pub.cs.systems.eim.practicaltest02v6.R
 import ro.pub.cs.systems.eim.practicaltest02v6.general.Constants
 import ro.pub.cs.systems.eim.practicaltest02v6.network.ClientThread
 import ro.pub.cs.systems.eim.practicaltest02v6.network.ServerThread
+import java.time.LocalDateTime
 
 class PracticalTest02v6MainActivity : AppCompatActivity() {
 
